@@ -9,7 +9,7 @@
 
 ## 📌 Project Overview
 
-In this project (and video 🎥), we build a **production-grade CI/CD pipeline** using:
+In this project 🎥, we build a **production-grade CI/CD pipeline** using:
 
 * **Jenkins Multibranch Pipeline**
 * **Docker & DockerHub**
