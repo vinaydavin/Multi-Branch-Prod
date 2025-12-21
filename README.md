@@ -84,7 +84,7 @@ LoadBalancer URL → Live Application
 ## 🎥 YouTube Video
 
 ▶️ **Watch the complete step-by-step implementation here:**
-🔗 [https://www.youtube.com/watch?v=XXXXXXXXXXX]((https://youtu.be/1ecF4lKBlMo))
+🔗 [https://youtu.be/1ecF4lKBlMo]
 
 ---
 
