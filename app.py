@@ -87,7 +87,7 @@ HTML_TEMPLATE = """
             color: white;
             border-radius: 50%;
             width: 20px;
-            height: 20px;
+            height: 30px;
             font-size: 12px;
             display: flex;
             align-items: center;
