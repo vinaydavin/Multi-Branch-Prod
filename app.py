@@ -1,4 +1,4 @@
-from flask import Flask, render_template_string, request, jsonify, session
+:%from flask import Flask, render_template_string, request, jsonify, session
 import json
 import os
 from datetime import datetime
@@ -309,7 +309,7 @@ HTML_TEMPLATE = """
                                     </button>
                                 </div>
                             </div>
-                        </div>
+OBOBOB                        </div>
                     `;
                 }).join('');
                 cartTotal.textContent = `$${total.toFixed(2)}`;
@@ -321,7 +321,7 @@ HTML_TEMPLATE = """
             if (newQuantity < 1) {
                 removeFromCart(productId);
                 return;
-            }
+OBOBOB            }
             
             fetch('/update_quantity', {
                 method: 'POST',
@@ -333,21 +333,21 @@ HTML_TEMPLATE = """
             .then(response => response.json())
             .then(data => {
                 cart = data.cart;
-                updateCartUI();
+OBOBOB                updateCartUI();
             });
         }
 
         // Toggle cart sidebar
         function toggleCart() {
             const sidebar = document.getElementById('cartSidebar');
-            const overlay = document.getElementById('cartOverlay');
+OBOBOB            const overlay = document.getElementById('cartOverlay');
             sidebar.classList.toggle('translate-x-full');
             overlay.classList.toggle('hidden');
         }
 
         // Filter products
         function filterProducts(category) {
-            const products = document.querySelectorAll('.product-card');
+OBOBOB            const products = document.querySelectorAll('.product-card');
             products.forEach(product => {
                 if (category === 'all' || product.dataset.category === category) {
                     product.style.display = 'block';
@@ -379,26 +379,26 @@ HTML_TEMPLATE = """
             document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Show notification
+OBOBOB        // Show notification
         function showNotification(message, type) {
             const notification = document.createElement('div');
-            notification.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 ${
+OBOBOB            notification.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 ${
                 type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
-            }`;
-            notification.textContent = message;
+OBOBOB            }`;
+OBOBOB            notification.textContent = message;
             document.body.appendChild(notification);
             
             setTimeout(() => {
                 notification.remove();
             }, 3000);
-        }
+OBOBOB        }
 
         // Checkout
         function checkout() {
             if (cart.length === 0) {
                 showNotification('Your cart is empty!', 'error');
                 return;
-            }
+OBOBOB            }
             
             fetch('/checkout', {
                 method: 'POST'
@@ -426,23 +426,23 @@ HTML_TEMPLATE = """
 @app.route("/")
 def home():
     return render_template_string(HTML_TEMPLATE, products=products)
-
+OBOBOB
 @app.route("/add_to_cart", methods=["POST"])
-def add_to_cart():
+OBOBOBdef add_to_cart():
     if 'cart' not in session:
         session['cart'] = []
     
     data = request.get_json()
-    product_id = data.get('product_id')
+OBOBOB    product_id = data.get('product_id')
     
     # Find the product
-    product = next((p for p in products if p['id'] == product_id), None)
-    
+OBOBOB    product = next((p for p in products if p['id'] == product_id), None)
+OBOBOB    
     if product:
         # Check if product already in cart
         cart = session['cart']
         cart_item = next((item for item in cart if item['id'] == product_id), None)
-        
+OBOBOB        
         if cart_item:
             cart_item['quantity'] += 1
         else:
@@ -477,18 +477,18 @@ def update_quantity():
     product_id = data.get('product_id')
     quantity = data.get('quantity')
     
-    if 'cart' in session:
+OBOBOB    if 'cart' in session:
         cart = session['cart']
-        cart_item = next((item for item in cart if item['id'] == product_id), None)
-        
+OBOBOB        cart_item = next((item for item in cart if item['id'] == product_id), None)
+OBOBOB        
         if cart_item:
             if quantity <= 0:
-                session['cart'] = [item for item in cart if item['id'] != product_id]
+OBOBOB                session['cart'] = [item for item in cart if item['id'] != product_id]
             else:
-                cart_item['quantity'] = quantity
+OBOBOB                cart_item['quantity'] = quantity
             
             return jsonify({'success': True, 'cart': session['cart']})
-    
+OBOBOB    
     return jsonify({'success': False})
 
 @app.route("/get_cart")
@@ -506,3 +506,4 @@ def checkout():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=False)
+
